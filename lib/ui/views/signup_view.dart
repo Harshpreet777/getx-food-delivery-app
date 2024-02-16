@@ -1,14 +1,10 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:getx_task/core/constants/color_constants.dart';
 import 'package:getx_task/core/constants/string_constants.dart';
-import 'package:getx_task/core/enums/viewstate.dart';
-import 'package:getx_task/core/models/user_list_request_model.dart';
-import 'package:getx_task/core/persistence/get_storage.dart';
-import 'package:getx_task/core/routing/routes.dart';
+
 import 'package:getx_task/core/utils/validation_util.dart';
 import 'package:getx_task/core/controller/gender_controller.dart';
 import 'package:getx_task/core/viewmodels/sign_up_view_model.dart';
@@ -18,10 +14,8 @@ import 'package:getx_task/ui/widgets/common_text.dart';
 // ignore: must_be_immutable
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
-  final GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
   final userData = GetStorage();
   String gender = "male";
-  String status = "active";
   Controller controller = Get.put(Controller());
 
   SignUpViewModel model = SignUpViewModel();
@@ -34,7 +28,7 @@ class SignUpScreen extends StatelessWidget {
   Form signUpForm(BuildContext context) {
     return Form(
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      key: formKey1,
+      key: model.formKey1,
       child: Column(
         children: [
           Padding(
@@ -217,36 +211,7 @@ class SignUpScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: ElevatedBtnWidget(
                 onpress: () {
-                  if (formKey1.currentState?.validate() ?? false) {
-                    var email = controller.email.value;
-                    var name = controller.name.value;
-                    var pass = controller.pass.value;
-                    UserStorage.setData(UserStorage.emailKey, email);
-                    UserStorage.setData(UserStorage.passKey, pass);
-
-                    const snackBar =
-                        SnackBar(content: Text('User Registered!'));
-                    model.state == ViewState.busy
-                        ? const Center(child: CircularProgressIndicator())
-                        : model.postSignUp(
-                            context,
-                            UserListRequestModel(
-                                email: email,
-                                name: name,
-                                gender: controller.selectedGender.value,
-                                status: status));
-
-                    if (context.mounted) {
-                      Get.toNamed(Routes.loginSignUpRoute);
-                    } else {
-                      const snackBar =
-                          SnackBar(content: Text('User Not Registered!'));
-                      log(snackBar.toString());
-                    }
-                    if (context.mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    }
-                  }
+                  model.onClickSignUp(context);
                 },
                 color: ColorConstants.oragneFA4A0C,
                 name: StringConstants.signup,

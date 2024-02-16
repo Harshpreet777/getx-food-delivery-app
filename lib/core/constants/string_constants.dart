@@ -5,7 +5,7 @@ class StringConstants {
   static String signup = 'Sign-up';
   static String name = 'Name';
   static String already = 'User already registered';
-
+  static String logoutMsg = 'All Data Cleared';
   static String emailaddress = 'Email address';
   static String password = 'Password';
   static String forgotpasscode = 'Forgot passcode?';
@@ -46,6 +46,12 @@ class StringConstants {
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
   static String male = 'Male';
   static String female = 'Female';
-  static String token='https://gorest.co.in/public/v2/users';
-  static String gender='Gender';
+  static String token = 'https://gorest.co.in/public/v2/users';
+  static String gender = 'Gender';
+  static String status = "active";
+  static String logout = 'Logout';
+  static String registered = 'User Registered';
+  static String registeredMsg = 'Continue to Login';
+  static String notRegistered = 'User Not Registered';
+  static String notRegisteredMsg = 'User Not Registered';
 }

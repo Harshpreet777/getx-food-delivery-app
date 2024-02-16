@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -7,6 +6,7 @@ import 'package:get/state_manager.dart';
 import 'package:getx_task/core/constants/color_constants.dart';
 import 'package:getx_task/core/constants/image_constants.dart';
 import 'package:getx_task/core/constants/string_constants.dart';
+import 'package:getx_task/core/persistence/get_storage.dart';
 import 'package:getx_task/core/routing/routes.dart';
 import 'package:getx_task/ui/views/food_view.dart';
 import 'package:getx_task/ui/widgets/common_text.dart';
@@ -46,6 +46,23 @@ class HomeView extends StatelessWidget {
             ],
           ),
           actions: [
+            SizedBox(
+                width: 100,
+                child: TextButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll(
+                            ColorConstants.oragneFA4A0C)),
+                    onPressed: () {
+                      UserStorage.clearData();
+                      Get.snackbar(
+                          StringConstants.logout, StringConstants.logoutMsg);
+                    },
+                    child: Text(
+                      StringConstants.logout,
+                      style: TextStyle(
+                          color: ColorConstants.white,
+                          fontWeight: FontWeight.w500),
+                    ))),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: SizedBox(

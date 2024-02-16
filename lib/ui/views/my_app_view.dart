@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_task/core/bindings/home_binding.dart';
+import 'package:getx_task/core/di/home_binding.dart';
 import 'package:getx_task/core/routing/router.dart';
 import 'package:getx_task/core/routing/routes.dart';
 
