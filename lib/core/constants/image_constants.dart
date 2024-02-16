@@ -12,14 +12,5 @@ class ImageConstant {
   static String cartIcon = 'assets/images/cart.png';
   static String logo = 'assets/images/Bella Olonje logo.png';
   static String bigLogo = 'assets/images/Group 3.png';
-  static List imgList = [
-    dish1Img,
-    dish2Img,
-    dish3Img,
-    dish4Img,
-    dish1Img,
-    dish2Img,
-    dish3Img,
-    dish4Img
-  ];
+  
 }

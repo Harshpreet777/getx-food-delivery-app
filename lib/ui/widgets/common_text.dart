@@ -8,12 +8,14 @@ class TextWidget extends StatelessWidget {
       this.fontWeight,
       required this.text,
       this.color,
-      required this.alignmentGeometry});
+      required this.alignmentGeometry,
+      required this.textAlign});
 
   double? size;
   FontWeight? fontWeight;
   String text;
   Color? color;
+  TextAlign? textAlign;
   AlignmentGeometry alignmentGeometry;
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class TextWidget extends StatelessWidget {
       child: Align(
         alignment: alignmentGeometry,
         child: Text(text,
-            textAlign: TextAlign.center,
+            textAlign: textAlign,
             style: TextStyle(
                 color: color, fontSize: size, fontWeight: fontWeight)),
       ),

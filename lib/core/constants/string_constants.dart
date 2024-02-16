@@ -3,6 +3,9 @@ class StringConstants {
   static String welcomeBtnText = 'Get started';
   static String login = 'Login';
   static String signup = 'Sign-up';
+  static String name = 'Name';
+  static String already = 'User already registered';
+
   static String emailaddress = 'Email address';
   static String password = 'Password';
   static String forgotpasscode = 'Forgot passcode?';
@@ -24,27 +27,25 @@ class StringConstants {
   static String returnInfo =
       'All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.';
   static String addToCart = 'Add to cart';
-  static String resultTitle = 'Found ${stringList.length} results';
+  static String resultTitle = 'Found results';
   static String price = 'N1,900';
-  static List stringList = [
-    dish1Name,
-    dish2Name,
-    dish3Name,
-    dish4Name,
-    dish1Name,
-    dish2Name,
-    dish3Name,
-    dish4Name,
-  ];
-  static List priceList = [
-    'N1,900',
-    'N1,300',
-    'N2,500',
-    'N3,700',
-    'N1,900',
-    'N1,300',
-    'N2,500',
-    'N3,700',
-  ];
-  static String noMatch='Name or Pass does not Exist';
+  static String somethingWentWrong = 'Something Went Wrong';
+  static String sessionExpired = 'Session Expired';
+  static String confrimPass = 'Confirm Password';
+  static String noMatch = 'Name or Pass does not Exist';
+  static String passNotMatch = 'Password does not match';
+  static String nameValidLength = 'Atleast 4 characters';
+  static String isValidEmpty = "Cannot be Empty";
+  static String nameValid = 'Only Characters are allowed';
+  static String passValid = 'Password is Not Valid';
+  static String emailValid = 'Email is Not Valid';
+  static String namePattern = r'^[a-z A-Z,.\-]+$';
+  static String passPattern =
+      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+  static String emailPattern =
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+  static String male = 'Male';
+  static String female = 'Female';
+  static String token='https://gorest.co.in/public/v2/users';
+  static String gender='Gender';
 }

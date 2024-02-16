@@ -50,6 +50,7 @@ class StackWidget extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 child: TextWidget(
+                  textAlign: TextAlign.center,
                   text: name,
                   alignmentGeometry: Alignment.center,
                   size: 22,
@@ -57,6 +58,7 @@ class StackWidget extends StatelessWidget {
                 ),
               ),
               TextWidget(
+                textAlign: TextAlign.center,
                 text: StringConstants.price,
                 alignmentGeometry: Alignment.center,
                 color: ColorConstants.oragneFA4A0C,

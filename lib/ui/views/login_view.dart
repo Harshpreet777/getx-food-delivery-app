@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:getx_task/core/constants/color_constants.dart';
 import 'package:getx_task/core/constants/string_constants.dart';
+import 'package:getx_task/core/routing/routes.dart';
 import 'package:getx_task/core/utils/validation_util.dart';
-import 'package:getx_task/ui/views/home_view.dart';
 import 'package:getx_task/ui/widgets/common_elevated_button.dart';
 import 'package:getx_task/ui/widgets/common_text.dart';
 
@@ -13,19 +15,23 @@ class LoginScreen extends StatelessWidget {
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
   final userData = GetStorage();
 
   @override
   Widget build(BuildContext context) {
+    return loginForm(context);
+  }
+
+  Form loginForm(BuildContext context) {
     return Form(
       autovalidateMode: AutovalidateMode.onUserInteraction,
       key: formKey,
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 60, left: 10),
+            padding: const EdgeInsets.only(top: 50, left: 10),
             child: TextWidget(
+              textAlign: TextAlign.left,
               text: StringConstants.emailaddress,
               alignmentGeometry: Alignment.topLeft,
               fontWeight: FontWeight.w600,
@@ -49,8 +55,9 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 40, left: 10),
+            padding: const EdgeInsets.only(top: 20, left: 10),
             child: TextWidget(
+              textAlign: TextAlign.left,
               text: StringConstants.password,
               alignmentGeometry: Alignment.topLeft,
               fontWeight: FontWeight.w600,
@@ -79,6 +86,7 @@ class LoginScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 30, left: 10),
             child: TextWidget(
+              textAlign: TextAlign.left,
               text: StringConstants.forgotpasscode,
               alignmentGeometry: Alignment.topLeft,
               fontWeight: FontWeight.w600,
@@ -87,25 +95,18 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height / 5,
+            height: MediaQuery.of(context).size.height / 8,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: ElevatedBtnWidget(
                 onpress: () {
-                  if (formKey.currentState!.validate()) {
-                    String email = userData.read('email');
-                    String pass = userData.read('pass');
+                  if (formKey.currentState?.validate() ?? false) {
+                    var email = userData.read('email');
+                    var pass = userData.read('pass');
                     if (emailController.text == email &&
                         passController.text == pass) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HomeView(),
-                          ));
-                      userData.remove('email');
-                      userData.remove('pass');
-                      // Get.toNamed(Routes.homeRoute);
+                      Get.toNamed(Routes.homeRoute);
                     } else {
                       showDialog<String>(
                           context: context,

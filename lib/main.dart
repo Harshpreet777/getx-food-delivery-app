@@ -1,28 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:getx_task/core/routing/router.dart';
-import 'package:getx_task/core/routing/routes.dart';
+import 'package:getx_task/core/di/locator.dart';
+import 'package:getx_task/ui/views/my_app_view.dart';
 
-void main() async{
+void main() async {
+  setupLocator();
   await GetStorage.init();
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: Routes.welcomeRoute,
-      getPages: Routing.getPages,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-    );
-  }
-}

@@ -39,6 +39,11 @@ dependencies:
   dots_indicator: ^3.0.0
   flutter_staggered_grid_view: 
   get_storage: 
+  dio: ^5.4.0
+  json_annotation:
+  get_it:
+  provider:
+  fluttertoast:
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +55,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  build_runner:
+  json_serializable:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

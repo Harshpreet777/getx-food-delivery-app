@@ -1,5 +1,4 @@
-import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:getx_task/core/routing/routes.dart';
 import 'package:getx_task/ui/views/detail_view.dart';
 import 'package:getx_task/ui/views/home_view.dart';
@@ -7,15 +6,16 @@ import 'package:getx_task/ui/views/login_signup_view.dart';
 import 'package:getx_task/ui/views/search_view.dart';
 import 'package:getx_task/ui/views/welcome_view.dart';
 
-class Routing {
+class RoutingPage {
   static List<GetPage<dynamic>> getPages = [
     GetPage(
       name: Routes.homeRoute,
       page: () => const HomeView(),
     ),
     GetPage(
+      
         name: Routes.detailsRoute,
-        page: () =>  DetailView(),
+        page: () => DetailView(),
         transition: Transition.zoom),
     GetPage(
       name: Routes.loginSignUpRoute,
@@ -23,7 +23,7 @@ class Routing {
     ),
     GetPage(
         name: Routes.searchRoute,
-        page: () =>  const SearchView(),
+        page: () => const SearchView(),
         transition: Transition.zoom),
     GetPage(
       name: Routes.welcomeRoute,

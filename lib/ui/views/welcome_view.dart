@@ -13,6 +13,14 @@ class WelcomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return welcome(context);
+  }
+
+  Scaffold welcome(BuildContext context) {
+    return welcomeScaffold(context);
+  }
+
+  Scaffold welcomeScaffold(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -38,6 +46,7 @@ class WelcomeView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(30.0),
                 child: TextWidget(
+                  textAlign: TextAlign.left,
                   text: StringConstants.welcomeTitle,
                   alignmentGeometry: Alignment.topLeft,
                   size: 60,
@@ -53,7 +62,6 @@ class WelcomeView extends StatelessWidget {
                   Align(
                       alignment: Alignment.centerLeft,
                       child: Image.asset(ImageConstant.femaleToy)),
-                  
                   Positioned(
                     bottom: 0,
                     left: 0,
@@ -63,24 +71,25 @@ class WelcomeView extends StatelessWidget {
                       height: 700,
                       decoration: BoxDecoration(
                           gradient: LinearGradient(
-                            stops: const[0.2,5],
+                              stops: const [0.2, 5],
                               end: Alignment.center,
                               begin: Alignment.bottomCenter,
                               colors: [
-                            ColorConstants.oragneFA4A0C,
-                            Colors.transparent
-                          ])),
+                                ColorConstants.oragneFA4A0C,
+                                Colors.transparent
+                              ])),
                     ),
-                  ),Positioned(
+                  ),
+                  Positioned(
                     bottom: 0,
                     left: 0,
                     right: 0,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: ElevatedBtnWidget(
-                        onpress: () {
-                          Get.toNamed(Routes.loginSignUpRoute);
-                        },
+                          onpress: () {
+                            Get.toNamed(Routes.loginSignUpRoute);
+                          },
                           color: ColorConstants.white,
                           name: StringConstants.welcomeBtnText,
                           textColor: ColorConstants.oragneFA4A0C),
