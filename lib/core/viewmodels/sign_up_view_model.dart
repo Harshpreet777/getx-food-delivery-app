@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:getx_task/core/constants/string_constants.dart';
 import 'package:getx_task/core/enums/viewstate.dart';
 import 'package:getx_task/core/models/user_list_request_model.dart';
@@ -9,9 +10,10 @@ import 'package:getx_task/core/routing/routes.dart';
 import 'package:getx_task/core/utils/toast_utils.dart';
 
 class SignUpViewModel {
-  ApiServices apiServices = ApiServices();
+  ApiServices apiServices = Get.find();
   // ignore: prefer_typing_uninitialized_variables
   var state;
+
   Future postSignUp(
       BuildContext context, UserListRequestModel requestModel) async {
     final response = await apiServices.postData(requestModel);

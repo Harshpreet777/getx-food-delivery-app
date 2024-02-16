@@ -4,6 +4,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:getx_task/core/constants/color_constants.dart';
 import 'package:getx_task/core/constants/string_constants.dart';
+import 'package:getx_task/core/persistence/get_storage.dart';
 import 'package:getx_task/core/routing/routes.dart';
 import 'package:getx_task/core/utils/validation_util.dart';
 import 'package:getx_task/ui/widgets/common_elevated_button.dart';
@@ -102,8 +103,8 @@ class LoginScreen extends StatelessWidget {
             child: ElevatedBtnWidget(
                 onpress: () {
                   if (formKey.currentState?.validate() ?? false) {
-                    var email = userData.read('email');
-                    var pass = userData.read('pass');
+                    var email = UserStorage.getData(UserStorage.emailKey);
+                    var pass = UserStorage.getData(UserStorage.passKey);
                     if (emailController.text == email &&
                         passController.text == pass) {
                       Get.toNamed(Routes.homeRoute);

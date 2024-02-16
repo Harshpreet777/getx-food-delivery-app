@@ -6,6 +6,7 @@ class Controller extends GetxController {
   var email = ''.obs;
   var pass = ''.obs;
   var confirmpass = ''.obs;
+  
 
   void onClickRadioButton(var gender) {
     selectedGender.value = gender;

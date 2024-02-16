@@ -7,7 +7,7 @@ import 'package:getx_task/core/constants/color_constants.dart';
 import 'package:getx_task/core/constants/string_constants.dart';
 import 'package:getx_task/core/enums/viewstate.dart';
 import 'package:getx_task/core/models/user_list_request_model.dart';
-import 'package:getx_task/core/persistence/preferences.dart';
+import 'package:getx_task/core/persistence/get_storage.dart';
 import 'package:getx_task/core/routing/routes.dart';
 import 'package:getx_task/core/utils/validation_util.dart';
 import 'package:getx_task/core/controller/gender_controller.dart';
@@ -221,9 +221,8 @@ class SignUpScreen extends StatelessWidget {
                     var email = controller.email.value;
                     var name = controller.name.value;
                     var pass = controller.pass.value;
-                    DishStorage.setData('name', name);
-                    DishStorage.setData('email', email);
-                    DishStorage.setData('pass', pass);
+                    UserStorage.setData(UserStorage.emailKey, email);
+                    UserStorage.setData(UserStorage.passKey, pass);
 
                     const snackBar =
                         SnackBar(content: Text('User Registered!'));

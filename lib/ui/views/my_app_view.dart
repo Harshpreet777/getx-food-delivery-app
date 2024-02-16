@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_task/core/bindings/home_binding.dart';
 import 'package:getx_task/core/routing/router.dart';
 import 'package:getx_task/core/routing/routes.dart';
 
@@ -9,9 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      // initialBinding: BindingsBuilder(() {
-      //   Get.put(const WelcomeView());
-      // }),
+     initialBinding: HomeBinding(),
       debugShowCheckedModeBanner: false,
       initialRoute: Routes.welcomeRoute,
       getPages: RoutingPage.getPages,
