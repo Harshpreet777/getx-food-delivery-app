@@ -1,23 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:getx_task/core/constants/color_constants.dart';
 import 'package:getx_task/core/constants/string_constants.dart';
-import 'package:getx_task/core/persistence/get_storage.dart';
-import 'package:getx_task/core/routing/routes.dart';
 import 'package:getx_task/core/utils/validation_util.dart';
+import 'package:getx_task/core/viewmodels/login_view_model.dart';
 import 'package:getx_task/ui/widgets/common_elevated_button.dart';
 import 'package:getx_task/ui/widgets/common_text.dart';
 
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passController = TextEditingController();
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final userData = GetStorage();
-
+  LoginViewModel? model;
   @override
   Widget build(BuildContext context) {
     return loginForm(context);
@@ -26,7 +18,7 @@ class LoginScreen extends StatelessWidget {
   Form loginForm(BuildContext context) {
     return Form(
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      key: formKey,
+      key: model?.formKey,
       child: Column(
         children: [
           Padding(
@@ -46,7 +38,7 @@ class LoginScreen extends StatelessWidget {
               validator: (value) {
                 return Validations.isEmailValid(value.toString());
               },
-              controller: emailController,
+              onChanged: (value) => model?.controller.lgnEmailController(value),
               style: TextStyle(
                   fontSize: 17,
                   color: ColorConstants.black,
@@ -72,7 +64,7 @@ class LoginScreen extends StatelessWidget {
               validator: (value) {
                 return Validations.isPassValid(value.toString());
               },
-              controller: passController,
+              onChanged: (value) => model?.controller.lgnPassController(value),
               obscureText: true,
               obscuringCharacter: '*',
               style: TextStyle(
@@ -102,30 +94,7 @@ class LoginScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: ElevatedBtnWidget(
                 onpress: () {
-                  if (formKey.currentState?.validate() ?? false) {
-                    var email = UserStorage.getData(UserStorage.emailKey);
-                    var pass = UserStorage.getData(UserStorage.passKey);
-                    if (emailController.text == email &&
-                        passController.text == pass) {
-                      Get.toNamed(Routes.homeRoute);
-                    } else {
-                      showDialog<String>(
-                          context: context,
-                          barrierDismissible: false,
-                          builder: (BuildContext context) => AlertDialog(
-                                title: const Text('Invalid Credentials'),
-                                content: Text(StringConstants.noMatch),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(context, 'OK');
-                                    },
-                                    child: const Text('OK'),
-                                  ),
-                                ],
-                              ));
-                    }
-                  }
+                  model?.onLoginButtonClicked(context);
                 },
                 color: ColorConstants.oragneFA4A0C,
                 name: StringConstants.login,

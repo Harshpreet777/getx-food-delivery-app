@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -6,7 +5,7 @@ import 'package:getx_task/core/constants/color_constants.dart';
 import 'package:getx_task/core/constants/string_constants.dart';
 
 import 'package:getx_task/core/utils/validation_util.dart';
-import 'package:getx_task/core/controller/gender_controller.dart';
+import 'package:getx_task/core/controller/controller.dart';
 import 'package:getx_task/core/viewmodels/sign_up_view_model.dart';
 import 'package:getx_task/ui/widgets/common_elevated_button.dart';
 import 'package:getx_task/ui/widgets/common_text.dart';
@@ -216,7 +215,7 @@ class SignUpScreen extends StatelessWidget {
                 color: ColorConstants.oragneFA4A0C,
                 name: StringConstants.signup,
                 textColor: ColorConstants.white),
-          )
+          ),
         ],
       ),
     );
