@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:getx_task/core/constants/color_constants.dart';
 import 'package:getx_task/core/constants/string_constants.dart';
 import 'package:getx_task/core/utils/validation_util.dart';
@@ -9,16 +10,20 @@ import 'package:getx_task/ui/widgets/common_text.dart';
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
-  LoginViewModel? model;
+  LoginViewModel model = Get.find();
   @override
   Widget build(BuildContext context) {
-    return loginForm(context);
+    return Obx(() => model.isLoading.value
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : loginForm(context));
   }
 
   Form loginForm(BuildContext context) {
     return Form(
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      key: model?.formKey,
+      key: model.formKey,
       child: Column(
         children: [
           Padding(
@@ -38,7 +43,7 @@ class LoginScreen extends StatelessWidget {
               validator: (value) {
                 return Validations.isEmailValid(value.toString());
               },
-              onChanged: (value) => model?.controller.lgnEmailController(value),
+              onChanged: (value) => model.controller.lgnEmailController(value),
               style: TextStyle(
                   fontSize: 17,
                   color: ColorConstants.black,
@@ -64,7 +69,7 @@ class LoginScreen extends StatelessWidget {
               validator: (value) {
                 return Validations.isPassValid(value.toString());
               },
-              onChanged: (value) => model?.controller.lgnPassController(value),
+              onChanged: (value) => model.controller.lgnPassController(value),
               obscureText: true,
               obscuringCharacter: '*',
               style: TextStyle(
@@ -94,7 +99,7 @@ class LoginScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: ElevatedBtnWidget(
                 onpress: () {
-                  model?.onLoginButtonClicked(context);
+                  model.onLoginButtonClicked(context);
                 },
                 color: ColorConstants.oragneFA4A0C,
                 name: StringConstants.login,

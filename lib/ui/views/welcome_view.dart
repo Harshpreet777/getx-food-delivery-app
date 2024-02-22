@@ -4,6 +4,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:getx_task/core/constants/color_constants.dart';
 import 'package:getx_task/core/constants/image_constants.dart';
 import 'package:getx_task/core/constants/string_constants.dart';
+import 'package:getx_task/core/persistence/get_storage.dart';
 import 'package:getx_task/core/routing/routes.dart';
 import 'package:getx_task/ui/widgets/common_elevated_button.dart';
 import 'package:getx_task/ui/widgets/common_text.dart';
@@ -88,7 +89,13 @@ class WelcomeView extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: ElevatedBtnWidget(
                           onpress: () {
-                            Get.toNamed(Routes.loginSignUpRoute);
+                            final isUser =
+                                UserStorage.getBool(UserStorage.user);
+                            if (isUser == true) {
+                              Get.toNamed(Routes.homeRoute);
+                            } else {
+                              Get.toNamed(Routes.loginSignUpRoute);
+                            }
                           },
                           color: ColorConstants.white,
                           name: StringConstants.welcomeBtnText,

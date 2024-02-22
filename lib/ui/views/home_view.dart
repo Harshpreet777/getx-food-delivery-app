@@ -11,14 +11,21 @@ import 'package:getx_task/core/routing/routes.dart';
 import 'package:getx_task/ui/views/food_view.dart';
 import 'package:getx_task/ui/widgets/common_text.dart';
 
+// ignore: must_be_immutable
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 4,
-      child: scaffold(),
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) {
+        SystemNavigator.pop();
+      },
+      child: DefaultTabController(
+        length: 4,
+        child: scaffold(),
+      ),
     );
   }
 
@@ -32,37 +39,12 @@ class HomeView extends StatelessWidget {
           leading: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: IconButton(
-                    onPressed: () {
-                      SystemNavigator.pop();
-                    },
-                    icon: const Icon(Icons.arrow_back_ios)),
-              ),
               IconButton(
                   onPressed: null,
                   icon: Image.asset(ImageConstant.hori3LineIcon)),
             ],
           ),
           actions: [
-            SizedBox(
-                width: 100,
-                child: TextButton(
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStatePropertyAll(
-                            ColorConstants.oragneFA4A0C)),
-                    onPressed: () {
-                      UserStorage.clearData();
-                      Get.snackbar(
-                          StringConstants.logout, StringConstants.logoutMsg);
-                    },
-                    child: Text(
-                      StringConstants.logout,
-                      style: TextStyle(
-                          color: ColorConstants.white,
-                          fontWeight: FontWeight.w500),
-                    ))),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: SizedBox(
@@ -70,8 +52,26 @@ class HomeView extends StatelessWidget {
                   width: 45,
                   child: IconButton(
                       onPressed: null,
-                      icon: Image.asset(ImageConstant.cartIcon))),
+                      icon: Image.asset(
+                        ImageConstant.cartIcon,
+                        color: ColorConstants.grey9A9A9D,
+                      ))),
             ),
+            Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: IconButton(
+                  onPressed: () {
+                    UserStorage.clearData();
+                    Get.snackbar(
+                        StringConstants.logout, StringConstants.logoutMsg);
+                    Get.offAllNamed(Routes.welcomeRoute);
+                  },
+                  icon: Icon(
+                    Icons.logout_outlined,
+                    color: ColorConstants.grey9A9A9D,
+                    size: 30,
+                  )),
+            )
           ],
         ),
         body: Column(

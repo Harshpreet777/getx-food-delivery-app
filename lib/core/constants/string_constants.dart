@@ -5,6 +5,7 @@ class StringConstants {
   static String signup = 'Sign-up';
   static String name = 'Name';
   static String already = 'User already registered';
+
   static String logoutMsg = 'All Data Cleared';
   static String emailaddress = 'Email address';
   static String password = 'Password';

@@ -13,7 +13,6 @@ class RoutingPage {
       page: () => const HomeView(),
     ),
     GetPage(
-      
         name: Routes.detailsRoute,
         page: () => DetailView(),
         transition: Transition.zoom),

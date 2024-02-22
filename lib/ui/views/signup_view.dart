@@ -14,14 +14,20 @@ import 'package:getx_task/ui/widgets/common_text.dart';
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
   final userData = GetStorage();
-  String gender = "male";
   Controller controller = Get.put(Controller());
 
-  SignUpViewModel model = SignUpViewModel();
+  SignUpViewModel model = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    return signUpForm(context);
+    return Obx(() =>
+    model.isLoading.value?
+        const Center(
+          child: CircularProgressIndicator(),
+        )
+  : signUpForm(context));
+      
+  
   }
 
   Form signUpForm(BuildContext context) {

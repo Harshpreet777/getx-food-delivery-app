@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
      initialBinding: HomeBinding(),
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.welcomeRoute,
+      initialRoute: Routes.homeRoute,
       getPages: RoutingPage.getPages,
       title: 'Flutter Demo',
       theme: ThemeData(

@@ -4,6 +4,7 @@ class UserStorage {
   static final GetStorage storage = GetStorage();
   static String emailKey = 'name';
   static String passKey = 'pass';
+  static String user='user';
 
   static void setData(String key, dynamic value) => storage.write(key, value);
 
