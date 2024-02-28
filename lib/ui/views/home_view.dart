@@ -17,14 +17,19 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      canPop: false,
-      onPopInvoked: (didPop) {
-        SystemNavigator.pop();
+    return GestureDetector(
+      onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
       },
-      child: DefaultTabController(
-        length: 4,
-        child: scaffold(),
+      child: PopScope(
+        canPop: false,
+        onPopInvoked: (didPop) {
+          SystemNavigator.pop();
+        },
+        child: DefaultTabController(
+          length: 4,
+          child: scaffold(),
+        ),
       ),
     );
   }

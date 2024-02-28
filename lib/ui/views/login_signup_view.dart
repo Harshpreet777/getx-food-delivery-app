@@ -7,7 +7,6 @@ import 'package:getx_task/ui/views/login_view.dart';
 
 class LoginSignUpView extends StatelessWidget {
   const LoginSignUpView({super.key});
-  
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +18,12 @@ class LoginSignUpView extends StatelessWidget {
 
   Scaffold scaffold() {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
         backgroundColor: ColorConstants.greyEFEEEE,
-        body: SingleChildScrollView(
+        body: GestureDetector(
+          onTap: () {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Column(
             children: [
               Container(
@@ -52,8 +55,8 @@ class LoginSignUpView extends StatelessWidget {
                           tabs: [
                             Tab(
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 40),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 40),
                                 child: Text(
                                   StringConstants.login,
                                   style: TextStyle(
@@ -65,8 +68,8 @@ class LoginSignUpView extends StatelessWidget {
                             ),
                             Tab(
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 40),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 40),
                                 child: Text(
                                   StringConstants.signup,
                                   style: TextStyle(
@@ -81,10 +84,11 @@ class LoginSignUpView extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
-                  height:800,
-                  child:  TabBarView(
-                      children: [LoginScreen(), SignUpScreen()]))
+              Expanded(
+                  child: TabBarView(children: [
+                Expanded(child: LoginScreen()),
+                Expanded(child: SignUpScreen())
+              ]))
             ],
           ),
         ));

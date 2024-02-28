@@ -20,14 +20,11 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() =>
-    model.isLoading.value?
-        const Center(
-          child: CircularProgressIndicator(),
-        )
-  : signUpForm(context));
-      
-  
+    return Obx(() => model.isLoading.value
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : signUpForm(context));
   }
 
   Form signUpForm(BuildContext context) {
@@ -83,8 +80,11 @@ class SignUpScreen extends StatelessWidget {
                   fontSize: 17,
                   color: ColorConstants.black,
                   fontWeight: FontWeight.w600),
-              decoration:
-                  InputDecoration(hintText: StringConstants.emailaddress),
+              decoration: InputDecoration(
+                  label: Text(
+                    StringConstants.emailaddress,
+                  ),
+                  hintText: StringConstants.emailaddress),
             ),
           ),
           Padding(

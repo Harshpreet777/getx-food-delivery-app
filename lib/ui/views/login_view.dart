@@ -92,11 +92,9 @@ class LoginScreen extends StatelessWidget {
               color: ColorConstants.oragneFA4A0C,
             ),
           ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 8,
-          ),
+          const Spacer(),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 30),
             child: ElevatedBtnWidget(
                 onpress: () {
                   model.onLoginButtonClicked(context);
